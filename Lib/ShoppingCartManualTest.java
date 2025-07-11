@@ -138,7 +138,7 @@ public class ShoppingCartManualTest {
             failedCount++; 
         }
 
-        // Test 10 price หรือ quantity ติดลบ ให้ข้าม
+        // Test 11 price หรือ quantity ติดลบ ให้ข้าม
         ArrayList<CartItem> ErrorCart = new ArrayList<>();
         ErrorCart.add(new CartItem("NORMAL", "Bread", 50.0, -2)); // ข้าม
         ErrorCart.add(new CartItem("NORMAL", "Milk", -15, 8));   // ข้าม
