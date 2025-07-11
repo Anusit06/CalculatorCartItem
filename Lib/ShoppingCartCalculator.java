@@ -19,7 +19,13 @@ public class ShoppingCartCalculator {
      * @return total ราคาสิ้นค้าทั้งหมด
      */
     public static double calculateTotalPrice(ArrayList<CartItem> items) {
+
+        if(items == null || items.isEmpty()){
+            return 0.0;
+        }
+        
         double total = 0.0;
+        
         for(CartItem item : items){
         if (item.price()<0 || item.quantity()<0 || items == null || items.isEmpty()) {
             continue; //หาก price และ quantity ติดลบ และ items เป็น null หรือ Empty
