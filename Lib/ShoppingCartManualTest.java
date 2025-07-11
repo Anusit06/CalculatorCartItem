@@ -12,8 +12,8 @@ public class ShoppingCartManualTest {
 
         // Test 1: ตะกร้าเป็น null
         try {
-            ArrayList<CartItem> nullCart = new ArrayList<>();
-            double total1 = ShoppingCartCalculator.calculateTotalPrice(nullCart);
+            
+            double total1 = ShoppingCartCalculator.calculateTotalPrice(null);
             if (total1 == 0.0) {
                 System.out.println("PASSED: Null cart should return 0.0");
                 passedCount++;
@@ -131,10 +131,24 @@ public class ShoppingCartManualTest {
         AllCart.add(new CartItem("NORMAL", "Apple", 15.0, 5));   // 75 , 50+108+75
         double total10 = ShoppingCartCalculator.calculateTotalPrice(AllCart);
         if (total10 == 233.0 ) {
-            System.out.println("PASSED: BULK cart total is correct (233.0)");
+            System.out.println("PASSED: All cart total is correct (233.0)");
             passedCount++;
         } else {
-            System.out.println("FAILED: BULK cart total expected 233.0.0 but got " + total10);
+            System.out.println("FAILED: All cart total expected 233.0 but got " + total10);
+            failedCount++; 
+        }
+
+        // Test 10 price หรือ quantity ติดลบ ให้ข้าม
+        ArrayList<CartItem> ErrorCart = new ArrayList<>();
+        ErrorCart.add(new CartItem("NORMAL", "Bread", 50.0, -2)); // ข้าม
+        ErrorCart.add(new CartItem("NORMAL", "Milk", -15, 8));   // ข้าม
+        ErrorCart.add(new CartItem("NORMAL", "Apple", 15.0, 3));   // 45
+        double total11 = ShoppingCartCalculator.calculateTotalPrice(ErrorCart);
+        if (total11 == 45.0 ) {
+            System.out.println("PASSED: Error cart total is correct (45.0)");
+            passedCount++;
+        } else {
+            System.out.println("FAILED: Error cart total expected 45.0 but got " + total11);
             failedCount++; 
         }
 
